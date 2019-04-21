@@ -1,5 +1,7 @@
 Wiktor.plug("openEntry", function(orig, name, link) {
-    this.navigation.hilight(link);
+    this.navigation.hilight(
+        Url.triml(Url.normalize(link.replace(/^\?/, "").split("#")[0]))
+    );
     orig(name, link);
 });
 
@@ -66,6 +68,7 @@ NavItem.plug("_render", function(orig) {
             href=${this.link}
             onclick=${e => this.openEntry(e)}
             class=${this.lit}
+            title=${this.name}
         >
             <li class="nav-item">
                 ${this.name}

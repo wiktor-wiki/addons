@@ -3,5 +3,7 @@ let md = new showdown.Converter({
     ghCompatibleHeaderId: true,
     disableForced4SpacesIndentedSublists: true,
     simplifiedAutoLink: true,
+    literalMidWordUnderscores: true,
 });
+
 Wiktor.addProcessor("md", content => md.makeHtml(content));
